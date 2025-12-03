@@ -85,13 +85,13 @@ const EchartsChart = (props: ComponentProps) => {
         height,
         width,
         renderer,
-        map,
+        // map,
     }: PythonArgs = props.args
-    if (isObject(map)) {
-        echarts.registerMap(map.mapName, map.geoJson, map.specialAreas)
-    }
+    // if (isObject(map)) {
+    //     echarts.registerMap(map.mapName, map.geoJson, map.specialAreas)
+    // }
     const js_options = evalStringToFunctionDeepMap(options)
-    const js_theme = registerTheme(theme)    
+    const js_theme = registerTheme(theme)
     const js_events = Object.fromEntries(
         Object.keys(onEvents).map((key) => {
             const eventFunction = onEvents[key]
@@ -121,7 +121,7 @@ const EchartsChart = (props: ComponentProps) => {
                 style={{ height: height, width: width }}
                 theme={js_theme}
                 onChartReady={() => {
-                    Streamlit.setFrameHeight()                    
+                    Streamlit.setFrameHeight()
                 }}
                 onEvents={js_events}
                 opts={{ renderer: renderer}}
