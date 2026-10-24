@@ -11,7 +11,7 @@ import { isObject, transform } from "lodash"
  * @returns object with all value passed through function
  */
 function deepMap(obj: any, iterator: Function, context: any) {
-  return transform(obj, function (result: any, val, key) {
+  return transform(obj, (result: any, val, key) => {
     result[key] = isObject(val)
       ? deepMap(val, iterator, context)
       : iterator.call(context, val, key, obj)
